@@ -2,6 +2,12 @@
 public with sharing class UTIL_Typeahead_TEST {
 
     private static testMethod void testQuery() {
+    	UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+    
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
 	    list<Account> aa = new list<Account>{
 	      new Account(Name='Test Account'),
 	      new Account(Name='Another Account', BillingCity='Test City'),

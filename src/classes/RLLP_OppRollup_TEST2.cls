@@ -52,9 +52,8 @@ public with sharing class RLLP_OppRollup_TEST2 {
     }
     static void testOpportunityUtilityErrorHandling(string strProcessor) {
     	
-    	Error_Settings__c errorSettings = UTIL_CustomSettingsFacade.getErrorSettings();
-    	errorSettings.Error_Notifications_On__c = false;
-		upsert errorSettings;
+    	Error_Settings__c errorSettings = UTIL_CustomSettingsFacade.getErrorSettingsForTests(new Error_Settings__c(
+    	   Error_Notifications_On__c = false, Store_Errors_On__c = false));
 
         npe01__Contacts_and_Orgs_Settings__c contactSettingsForTests = UTIL_CustomSettingsFacade.getContactsSettingsForTests(
             new npe01__Contacts_and_Orgs_Settings__c (

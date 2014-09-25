@@ -43,19 +43,20 @@ public with sharing class ADDR_Validation_Gateway_TEST {
     
     public static ADDR_SmartyStreets_Gateway createDefaultSettings() {
         // use the household account model
-        UTIL_CustomSettingsFacade.getContactsSettings();
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
 
         // create the basic api authentication settings
-        settings = UTIL_CustomSettingsFacade.getAddressVerificationSettings();
-        settings.Using_SmartyStreets__c = true;
-        settings.Auth_ID__c = 'hey';
-        settings.Auth_Token__c = 'there';
-        settings.Address_Verification_Endpoint__c = 'api.smartystreets.com/street-address';
-        settings.Zipcode_Verification_Endpoint__c = 'api.smartystreets.com/zipcode';
-        settings.Class__c = 'ADDR_SmartyStreets_Validator';
-        settings.Enable_Automatic_Verification__c = true;
-        settings.Reject_Ambiguous_Addresses__c = true;
-        upsert settings;
+        settings = UTIL_CustomSettingsFacade.getAddressVerificationSettingsForTests(
+            new Addr_Verification_Settings__c(
+		        Using_SmartyStreets__c = true,
+		        Auth_ID__c = 'hey',
+		        Auth_Token__c = 'there',
+		        Address_Verification_Endpoint__c = 'api.smartystreets.com/street-address',
+		        Zipcode_Verification_Endpoint__c = 'api.smartystreets.com/zipcode',
+		        Class__c = 'ADDR_SmartyStreets_Validator',
+		        Enable_Automatic_Verification__c = true,
+		        Reject_Ambiguous_Addresses__c = true));
         
         Test.setMock(HttpCalloutMock.class, new ADDR_MockHttpRespGenerator_TEST());
         return new ADDR_SmartyStreets_Gateway(settings);
@@ -109,7 +110,7 @@ public with sharing class ADDR_Validation_Gateway_TEST {
     	ADDR_SmartyStreets_Gateway gateway = createDefaultSettings();
     	
     	settings.Address_Verification_Endpoint__c = 'bad-authentication-for-test';
-        update settings;
+        //update settings;
         
         Test.startTest();
         ADDR_SmartyStreets_Gateway.AddressResponse sr;

@@ -384,7 +384,7 @@ public without sharing class UTIL_CustomSettingsFacade {
         contactsSettings.npe01__Opportunity_Contact_Role_Default_role__c = mySettings.npe01__Opportunity_Contact_Role_Default_role__c;
         contactsSettings.npe01__Disable_Account_Model_Trigger__c = mySettings.npe01__Disable_Account_Model_Trigger__c;
         contactsSettings.npe01__Payments_Enabled__c = mySettings.npe01__Payments_Enabled__c;
-        upsert contactsSettings;
+        //upsert contactsSettings;
         return contactsSettings;
     }
     
@@ -412,14 +412,13 @@ public without sharing class UTIL_CustomSettingsFacade {
         householdsSettings.npo02__Household_Creation_Excluded_Recordtypes__c = mySettings.npo02__Household_Creation_Excluded_Recordtypes__c;
         householdsSettings.npo02__Household_Mailing_List_ID__c = mySettings.npo02__Household_Mailing_List_ID__c;
         householdsSettings.npo02__Schedule_Job_Limit__c = 25;
-        upsert householdsSettings;
+        //upsert householdsSettings;
  
         // if the caller explicitly is testing Household objects, make sure we have HH Accounts turned off.
         if (householdsSettings.npo02__Household_Rules__c != HH_Households.NO_HOUSEHOLDS_PROCESSOR) {
-            if (getContactsSettings().npe01__Account_Processor__c == CAO_Constants.HH_ACCOUNT_PROCESSOR) {
-                getContactsSettings().npe01__Account_Processor__c = CAO_Constants.ONE_TO_ONE_PROCESSOR;
-                upsert contactsSettings;    
-            }   
+            contactsSettings = getContactsSettingsforTests(
+                new npe01__Contacts_And_Orgs_Settings__c(npe01__Account_Processor__c = CAO_Constants.ONE_TO_ONE_PROCESSOR));
+            //upsert contactsSettings;      
         }
         return householdsSettings;
     }
@@ -431,7 +430,7 @@ public without sharing class UTIL_CustomSettingsFacade {
         //create our own based on what's passed in from the test
         relationshipsSettings.npe4__Reciprocal_Method__c = mySettings.npe4__Reciprocal_Method__c;
         relationshipsSettings.npe4__Gender_Field__c = mySettings.npe4__Gender_Field__c;
-        upsert relationshipsSettings;
+        //upsert relationshipsSettings;
         return relationshipsSettings;
     }
     
@@ -440,7 +439,7 @@ public without sharing class UTIL_CustomSettingsFacade {
     	   affiliationsSettings = npe5__Affiliations_Settings__c.getInstance();
     	   
     	affiliationsSettings.npe5__Automatic_Affiliation_Creation_Turned_On__c = mySettings.npe5__Automatic_Affiliation_Creation_Turned_On__c;   
-        upsert affiliationsSettings;
+        //upsert affiliationsSettings;
         return affiliationsSettings;
     }
     
@@ -451,7 +450,23 @@ public without sharing class UTIL_CustomSettingsFacade {
     	errorSettings.Error_Notifications_On__c = mySettings.Error_Notifications_On__c;   
     	errorSettings.Error_Notifications_To__c = mySettings.Error_Notifications_To__c;
     	errorSettings.Store_Errors_On__c = mySettings.Store_Errors_On__c;
-    	upsert errorSettings;
+    	//upsert errorSettings;
     	return errorSettings;  
+    }
+    
+    public static Addr_Verification_Settings__c getAddressVerificationSettingsForTests(Addr_Verification_Settings__c mySettings) {
+    	if(addressVerificationSettings == null)
+    	   addressVerificationSettings = Addr_Verification_Settings__c.getInstance();
+    	
+	   addressVerificationSettings.Using_SmartyStreets__c = mySettings.Using_SmartyStreets__c;
+       addressVerificationSettings.Enable_Automatic_Verification__c = mySettings.Enable_Automatic_Verification__c;
+       addressVerificationSettings.Reject_Ambiguous_Addresses__c = mySettings.Reject_Ambiguous_Addresses__c;
+       addressVerificationSettings.Auth_ID__c = mySettings.Auth_ID__c;
+       addressVerificationSettings.Auth_Token__c = mySettings.Auth_Token__c;
+       addressVerificationSettings.Address_Verification_Endpoint__c = mySettings.Address_Verification_Endpoint__c;
+       addressVerificationSettings.Zipcode_Verification_Endpoint__c = mySettings.Zipcode_Verification_Endpoint__c;
+       addressVerificationSettings.Class__c = mySettings.Class__c;
+       //upsert addressVerificationSettings;
+       return addressVerificationSettings;
     }
 }

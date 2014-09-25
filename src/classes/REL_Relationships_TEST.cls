@@ -561,7 +561,8 @@ private class REL_Relationships_TEST {
     static testMethod void testErrorRecordCreation() {
     	if (strTestOnly != '*' && strTestOnly != 'testErrorRecordCreation') return;
     	
-    	UTIL_CustomSettingsFacade.getErrorSettings();
+    	UTIL_CustomSettingsFacade.getErrorSettingsForTests(new Error_Settings__c(
+           Error_Notifications_On__c = false, Store_Errors_On__c = false));
     	
         setupRelationshipTestData(null);
         npe4__Relationship__c[] relationships = new npe4__Relationship__c[]{

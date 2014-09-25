@@ -36,19 +36,20 @@
 public with sharing class ADDR_GoogleGeoAPI_Validator_TEST {
     public static Addr_Verification_Settings__c getDefaultSettings() {
         // use the household account model
-        UTIL_CustomSettingsFacade.getContactsSettings();
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
 
         // create the basic api settings
-        Addr_Verification_Settings__c settings = UTIL_CustomSettingsFacade.getAddressVerificationSettings();
-        settings.Using_SmartyStreets__c = false;
-        settings.Auth_ID__c = 'hey';
-        settings.Auth_Token__c = 'there';
-        settings.Address_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?';
-        settings.Zipcode_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?';
-        settings.Class__c = 'ADDR_GoogleGeoAPI_Validator';
-        settings.Enable_Automatic_Verification__c = true;
-        settings.Reject_Ambiguous_Addresses__c = true;
-        update settings;
+        Addr_Verification_Settings__c settings = UTIL_CustomSettingsFacade.getAddressVerificationSettingsForTests(
+            new Addr_Verification_Settings__c(
+		        Using_SmartyStreets__c = false,
+		        Auth_ID__c = 'hey',
+		        Auth_Token__c = 'there',
+		        Address_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?',
+		        Zipcode_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?',
+		        Class__c = 'ADDR_GoogleGeoAPI_Validator',
+		        Enable_Automatic_Verification__c = true,
+		        Reject_Ambiguous_Addresses__c = true));
         return settings;
     }
 
@@ -179,11 +180,11 @@ public with sharing class ADDR_GoogleGeoAPI_Validator_TEST {
     }
     static testMethod void testNullAuthToken() {
         // create settings w/o a token
-        Addr_Verification_Settings__c settings = UTIL_CustomSettingsFacade.getAddressVerificationSettings();
-        settings.Address_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?';
-        settings.Class__c = 'ADDR_GoogleGeoAPI_Validator';
-        settings.Enable_Automatic_Verification__c = true;
-        update settings;
+        Addr_Verification_Settings__c settings = UTIL_CustomSettingsFacade.getAddressVerificationSettingsForTests(
+            new Addr_Verification_Settings__c(
+                Address_Verification_Endpoint__c = 'maps.googleapis.com/maps/api/geocode/json?',
+                Class__c = 'ADDR_GoogleGeoAPI_Validator',
+                Enable_Automatic_Verification__c = true));
 
         Address__c a = new Address__c(MailingState__c = 'CA',  MailingCity__c = 'Cupertino');
 
