@@ -37,6 +37,12 @@ private class OPP_MatchingDonationsBTN_TEST {
 
     static testmethod void TestMatchingDonationPage()
     {
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+    
+		UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+		    new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
         Account testaccount = new Account(name='Test Company');
         insert testaccount;
         

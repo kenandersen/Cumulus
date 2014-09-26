@@ -31,6 +31,13 @@ public class AFFL_Affiliations_TEST {
     static testMethod void newContactOnOrgAccount() {
         if (strTestOnly != '*' && strTestOnly != 'newContactOnOrgAccount') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+		    new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+		    
+		UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+		    new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
+        
         npe5__Affiliations_Settings__c affiliationsSettingsForTests = UTIL_CustomSettingsFacade.getAffiliationsSettingsForTests(
             new npe5__Affiliations_Settings__c(npe5__Automatic_Affiliation_Creation_Turned_On__c = true));
         
@@ -81,6 +88,12 @@ public class AFFL_Affiliations_TEST {
     static testMethod void newContactOnOrgAccountAutoOff() {
         if (strTestOnly != '*' && strTestOnly != 'newContactOnOrgAccountAutoOff') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         npe5__Affiliations_Settings__c affiliationsSettingsForTests = UTIL_CustomSettingsFacade.getAffiliationsSettingsForTests(
             new npe5__Affiliations_Settings__c(npe5__Automatic_Affiliation_Creation_Turned_On__c = false));
         
@@ -104,6 +117,12 @@ public class AFFL_Affiliations_TEST {
     static testMethod void newContactOnIndividualAccount() {
         if (strTestOnly != '*' && strTestOnly != 'newContactOnIndividualAccount') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+		    new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+		    
+		UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+		    new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
         npe5__Affiliations_Settings__c affiliationsSettingsForTests = UTIL_CustomSettingsFacade.getAffiliationsSettingsForTests(
             new npe5__Affiliations_Settings__c(npe5__Automatic_Affiliation_Creation_Turned_On__c = true));
         
@@ -175,6 +194,12 @@ public class AFFL_Affiliations_TEST {
     static testMethod void contactWithMultipleAffiliations_v2() {
         if (strTestOnly != '*' && strTestOnly != 'contactWithMultipleAffiliations_v2') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+		    new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+		    
+		UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+		    new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
         npe5__Affiliations_Settings__c affiliationsSettingsForTests = UTIL_CustomSettingsFacade.getAffiliationsSettingsForTests(
             new npe5__Affiliations_Settings__c(npe5__Automatic_Affiliation_Creation_Turned_On__c = true));
         

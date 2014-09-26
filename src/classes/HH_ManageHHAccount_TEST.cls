@@ -33,6 +33,12 @@ public with sharing class HH_ManageHHAccount_TEST {
     public static testMethod void testExistingHH() { 
         if (strTestOnly != '*' && strTestOnly != 'testExistingHH') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         Account hh = new Account(
             Name = 'test_hh',
             npe01__SYSTEM_AccountType__c = CAO_Constants.HH_ACCOUNT_TYPE
@@ -99,6 +105,12 @@ public with sharing class HH_ManageHHAccount_TEST {
     public static testMethod void testHHAddrToContact() {
         if (strTestOnly != '*' && strTestOnly != 'testHHAddrToContact') return;
 
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         //tests writing the household address to the contact if the flag is ticked
         Account hh = new Account(
             Name = 'test_hh',
@@ -161,6 +173,12 @@ public with sharing class HH_ManageHHAccount_TEST {
     public static testMethod void testRemoveContactActiveAddress() {
         if (strTestOnly != '*' && strTestOnly != 'testRemoveContactActiveAddress') return;
 
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         //tests that removing the contact who is the only owner of the active address changes the active address to another appropriate one
         
         Account hh = new Account(
@@ -243,6 +261,12 @@ public with sharing class HH_ManageHHAccount_TEST {
     public static testMethod void testNewHH() {
         if (strTestOnly != '*' && strTestOnly != 'testNewHH') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         Account hh = new Account(
             Name = 'test_hh',
             npe01__SYSTEM_AccountType__c = CAO_Constants.HH_ACCOUNT_TYPE
@@ -314,6 +338,12 @@ public with sharing class HH_ManageHHAccount_TEST {
     public static testMethod void testFindAndAddPart1() {
         if (strTestOnly != '*' && strTestOnly != 'testFindAndAddPart1') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         Account hh = new Account(            
             npe01__SYSTEM_AccountType__c = CAO_Constants.HH_ACCOUNT_TYPE            
         );
@@ -464,6 +494,12 @@ public with sharing class HH_ManageHHAccount_TEST {
     public static testMethod void testFindAndAddPart2() {
         if (strTestOnly != '*' && strTestOnly != 'testFindAndAddPart2') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         Account hh = new Account(            
             npe01__SYSTEM_AccountType__c = CAO_Constants.HH_ACCOUNT_TYPE            
         );
@@ -563,6 +599,12 @@ public with sharing class HH_ManageHHAccount_TEST {
     public static testMethod void testRemoveReAdd() {
         if (strTestOnly != '*' && strTestOnly != 'testRemoveReAdd') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         Account hh = new Account (
             Name = 'Household',
             npe01__SYSTEM_AccountType__c = CAO_Constants.HH_ACCOUNT_TYPE

@@ -2,6 +2,12 @@
 public with sharing class STG_UninstallScript_TEST {
 
     public testmethod static void rununinstall() {
+    	UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+		    new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+		    
+		UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+		    new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
     	//The scheduled jobs are being set when the settings page loads
     	STG_SettingsManager_CTRL ctrl = new STG_SettingsManager_CTRL(); 
     	ctrl.setTriggerSchedConfig();

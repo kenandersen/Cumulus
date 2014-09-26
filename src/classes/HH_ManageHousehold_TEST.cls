@@ -237,6 +237,12 @@ public with sharing class HH_ManageHousehold_TEST {
     
     public static testMethod void testNewHH() {
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+		    new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+		    
+		UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+		    new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
         npo02__Household__c hh = new npo02__Household__c(
             Name = 'test_hh'
             );

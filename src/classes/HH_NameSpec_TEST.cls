@@ -50,6 +50,12 @@ private with sharing class HH_NameSpec_TEST {
     static testMethod void OneContact() {
         if (strTestOnly != '*' && strTestOnly != 'OneContact') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         list<Contact> listCon = new list<Contact>();
         Contact c1 = new Contact (
             Salutation = 'Skipper',
@@ -83,7 +89,13 @@ private with sharing class HH_NameSpec_TEST {
     **********************************************************************************************************/            
     static testMethod void TwoContactSameLastname() {
         if (strTestOnly != '*' && strTestOnly != 'TwoContactSameLastname') return;
-                
+        
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         list<Contact> listCon = new list<Contact>();
         Contact c1 = new Contact (
             Salutation = 'Skipper',
@@ -122,7 +134,13 @@ private with sharing class HH_NameSpec_TEST {
     **********************************************************************************************************/            
     static testMethod void TwoContactDifferentLastname() {
         if (strTestOnly != '*' && strTestOnly != 'TwoContactDifferentLastname') return;
-                
+        
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         list<Contact> listCon = new list<Contact>();
         Contact c1 = new Contact (
             Salutation = 'Skipper',
@@ -164,7 +182,13 @@ private with sharing class HH_NameSpec_TEST {
     **********************************************************************************************************/            
     static testMethod void ThreeContactsTwoLastnames() {
         if (strTestOnly != '*' && strTestOnly != 'ThreeContactsTwoLastnames') return;
-                
+        
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         list<Contact> listCon = new list<Contact>();
         Contact c1 = new Contact (
             Salutation = 'Skipper',
@@ -211,7 +235,13 @@ private with sharing class HH_NameSpec_TEST {
     **********************************************************************************************************/            
     static testMethod void ThreeContactsTwoLastnamesCustomFields() {
         if (strTestOnly != '*' && strTestOnly != 'ThreeContactsTwoLastnamesCustomFields') return;
-                
+        
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         list<Contact> listCon = new list<Contact>();
         Contact c1 = new Contact (
             Salutation = 'Skipper',
@@ -263,7 +293,13 @@ private with sharing class HH_NameSpec_TEST {
     **********************************************************************************************************/            
     static testMethod void SixContactsOneLastnamesContactOverrun() {
         if (strTestOnly != '*' && strTestOnly != 'SixContactsOneLastnamesContactOverrun') return;
-                
+        
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         list<Contact> listCon = new list<Contact>();
         Contact c1 = new Contact (
             Salutation = 'Skipper',
@@ -329,6 +365,12 @@ private with sharing class HH_NameSpec_TEST {
     static testMethod void testRefreshAllHHNaming() {
         if (strTestOnly != '*' && strTestOnly != 'testRefreshAllHHNaming') return;
 
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         Contact c1 = new Contact(
             Salutation = 'Skipper',
             Firstname = 'John',
@@ -566,6 +608,12 @@ private with sharing class HH_NameSpec_TEST {
     static testMethod void OneAnonymousContact() {
         if (strTestOnly != '*' && strTestOnly != 'OneContact') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         list<Contact> listCon = new list<Contact>();
         Contact c1 = new Contact (
             Salutation = 'Skipper',

@@ -37,6 +37,12 @@ public with sharing class UTIL_MasterSchedulable_TEST {
     public static testmethod void scheduleJob() {
         if (strTestOnly != '*' && strTestOnly != 'scheduleJob') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         List<Schedulable__c> jobs = new List<Schedulable__c>();
         jobs.add(new Schedulable__c(Name = 'Recurring Donation Updates', Class_Name__c = 'RD_RecurringDonations_BATCH', Active__c = true));
         jobs.add(new Schedulable__c(Name = 'Opportunity Rollups', Class_Name__c = 'RLLP_OppAccRollup_BATCH', Active__c = true));
@@ -66,6 +72,12 @@ public with sharing class UTIL_MasterSchedulable_TEST {
     public static testmethod void neverRun() {
         if (strTestOnly != '*' && strTestOnly != 'needsToRun') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         List<Schedulable__c> jobs = new List<Schedulable__c>();
         jobs.add(new Schedulable__c(Name = 'Recurring Donation Updates', Class_Name__c = 'RD_RecurringDonations_BATCH', 
                     Active__c = true, Frequency__c = 'Hourly'));
@@ -90,6 +102,12 @@ public with sharing class UTIL_MasterSchedulable_TEST {
     public static testmethod void needsToRun() {
         if (strTestOnly != '*' && strTestOnly != 'needsToRun') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         List<Schedulable__c> jobs = new List<Schedulable__c>();
         jobs.add(new Schedulable__c(Name = 'Recurring Donation Updates', Class_Name__c = 'RD_RecurringDonations_BATCH', 
                     Active__c = true, Frequency__c = 'Hourly', Last_Time_Run__c = System.now().addHours(-2)));
@@ -114,6 +132,12 @@ public with sharing class UTIL_MasterSchedulable_TEST {
     public static testmethod void doesNotNeedToRun() {
         if (strTestOnly != '*' && strTestOnly != 'doesNotNeedToRun') return;
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         List<Schedulable__c> jobs = new List<Schedulable__c>();
         Datetime lastTimeRun = System.now().addMinutes(-30);
         jobs.add(new Schedulable__c(Name = 'Recurring Donation Updates', Class_Name__c = 'RD_RecurringDonations_BATCH', 

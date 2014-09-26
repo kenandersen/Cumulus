@@ -42,6 +42,12 @@ public with sharing class UTIL_Describe_TEST {
     // TEST
     static testmethod void testDescribe() {
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         string s;
         
         Schema.DescribeSObjectResult res = UTIL_Describe.getObjectDescribe('Contact');        

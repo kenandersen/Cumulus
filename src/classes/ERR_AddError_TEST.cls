@@ -34,6 +34,12 @@
 public with sharing class ERR_AddError_TEST {
 
     public testmethod static void simpleDml() {
+    	UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+		    new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+		    
+		UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+		    new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+  
         Account acc1 = new Account(Name='testAcc1');
         Account acc2 = new Account(Name='testAcc2');
         Account acc3 = new Account(Name='testAcc3');
@@ -57,6 +63,12 @@ public with sharing class ERR_AddError_TEST {
     }
     
     public testmethod static void simpleDmlMultipleErrors() {
+    	UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         Account acc1 = new Account(Name='testAcc1');
         Account acc2 = new Account(Name='testAcc2');
         Account acc3 = new Account(Name='testAcc3');
@@ -85,11 +97,19 @@ public with sharing class ERR_AddError_TEST {
     }
     
     public testmethod static void databaseDml() {
-    	Error_Settings__c errorSettings = UTIL_CustomSettingsFacade.getErrorSettings();
+    	UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
+    	UTIL_CustomSettingsFacade.getErrorSettingsForTests(new Error_Settings__c(Error_Notifications_On__c = true, 
+            Error_Notifications_To__c = null, Store_Errors_On__c = true));
+            
     	// Delete the error settings if they are from the database
-    	if (errorSettings.id != null) {
+    	/*if (errorSettings.id != null) {
     	    delete errorSettings;
-    	}
+    	}*/
     	
         Account acc1 = new Account(Name='testAcc1');
         Account acc2 = new Account(Name='testAcc2');

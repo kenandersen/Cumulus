@@ -126,6 +126,12 @@ private class PMT_PaymentWizard_TEST {
     
     public static testMethod void test_PageElementsMonthly() {
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         // create test data
         Account acct = new Account (
             Name='Test Account'
@@ -191,7 +197,13 @@ private class PMT_PaymentWizard_TEST {
     }
     
     public static testMethod void test_PageElementsWeekly() {
-               
+        
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         // create test data
         Account acct = new Account (
             Name='Test Account'
@@ -247,6 +259,12 @@ private class PMT_PaymentWizard_TEST {
     
     public static testMethod void test_PageElementsYearly() {
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         // create test data
         Account acct = new Account (
             Name='Test Account'
@@ -301,6 +319,12 @@ private class PMT_PaymentWizard_TEST {
     
     public static testMethod void test_nullOpps() {
     
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         // create the page 
         PageReference pageRef=Page.PMT_PaymentWizard; 
         Test.setCurrentPage(pageRef);
@@ -321,6 +345,12 @@ private class PMT_PaymentWizard_TEST {
     
     public static testMethod void test_publicGetters() {
         
+        UTIL_CustomSettingsFacade.getContactsSettingsForTests(
+            new npe01__Contacts_and_Orgs_Settings__c (npe01__Account_Processor__c = CAO_Constants.HH_ACCOUNT_PROCESSOR));
+            
+        UTIL_CustomSettingsFacade.getHouseholdsSettingsForTests(
+            new npo02__Households_Settings__c (npo02__Household_Rules__c = HH_Households.ALL_PROCESSOR));
+            
         // instantiate the controller
         PMT_PaymentWizard_CTRL controller=new PMT_PaymentWizard_CTRL();
         
